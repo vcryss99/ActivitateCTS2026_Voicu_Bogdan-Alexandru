@@ -9,10 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class StudentReader extends AplicantReader{
+public class StudentiReader extends AplicantReader {
+    public StudentiReader(String path) {
+        super(path);
+    }
     @Override
-    public List<Aplicant> readAplicant(String file) throws FileNotFoundException {
-        Scanner input = new Scanner(new File(file));
+    public List<Aplicant> readAplicanti() throws FileNotFoundException {
+        Scanner input = new Scanner(new File(path));
         input.useDelimiter(",|\n");
         List<Aplicant> studenti = new ArrayList<Aplicant>();
 
@@ -20,6 +23,7 @@ public class StudentReader extends AplicantReader{
             Student s = new Student();
 
             super.readAplicant(input, s);
+
             int an_studii = input.nextInt();
             String facultate = (input.next()).toString();
 

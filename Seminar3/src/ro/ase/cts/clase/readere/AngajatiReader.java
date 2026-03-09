@@ -9,10 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class AngajatReader extends AplicantReader{
+public class AngajatiReader extends AplicantReader {
+    public AngajatiReader(String path) {
+        super(path);
+    }
+
     @Override
-    public List<Aplicant> readAplicant(String file) throws FileNotFoundException {
-        Scanner input2 = new Scanner(new File(file));
+    public List<Aplicant> readAplicanti() throws FileNotFoundException {
+        Scanner input2 = new Scanner(new File(path));
         input2.useDelimiter(",");
         List<Aplicant> angajati = new ArrayList<Aplicant>();
 
@@ -20,11 +24,11 @@ public class AngajatReader extends AplicantReader{
             Angajat a = new Angajat();
 
             super.readAplicant(input2, a);
+
             int salariu = input2.nextInt();
             String ocupatie = input2.next();
 
             a.setSalariu(salariu);
-
             a.setOcupatie(ocupatie);
 
             angajati.add(a);
